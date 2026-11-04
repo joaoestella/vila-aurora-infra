@@ -35,7 +35,7 @@ def evaluate():
     Xtr = Xtr[ytr == 0]                         # treina só com normal
     Xte, yte, kind = synth(1200, 99)
     sc = StandardScaler().fit(Xtr)
-    CONT=float(os.environ.get('IF_CONT','0.08'))
+    CONT=float(os.environ.get('IF_CONT','0.06'))
     clf = IsolationForest(n_estimators=300, contamination=CONT, max_samples=256, random_state=0).fit(sc.transform(Xtr))
     pred = (clf.predict(sc.transform(Xte)) == -1).astype(int)
     tp = int(((pred == 1) & (yte == 1)).sum()); fp = int(((pred == 1) & (yte == 0)).sum())
@@ -51,7 +51,7 @@ def evaluate():
         idx = [i for i, kk in enumerate(kind) if kk == k and yte[i] == 1]
         if idx:
             pork[k] = round(float(pred[idx].mean()), 3)
-    rep = {"modelo": "IsolationForest(n=250, contamination=CONT)", "treino_normal": int((ytr == 0).sum()),
+    rep = {"modelo": f"IsolationForest(n=300, contamination={CONT}, max_samples=256)", "treino_normal": int((ytr == 0).sum()),
            "teste": {"total": len(yte), "anomalias": int(yte.sum())},
            "precisao": round(prec, 3), "revocacao": round(rec, 3), "f1": round(f1, 3),
            "falsos_positivos": fp, "taxa_falsos_positivos": round(fpr, 3),

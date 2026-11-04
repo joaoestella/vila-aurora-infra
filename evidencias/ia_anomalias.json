@@ -1,5 +1,5 @@
 {
-  "modelo": "IsolationForest(n=250, contamination=CONT)",
+  "modelo": "IsolationForest(n=300, contamination=0.06, max_samples=256)",
   "treino_normal": 4000,
   "teste": {
     "total": 1410,
@@ -17,12 +17,12 @@
     "tn": 1139
   },
   "deteccao_por_tipo": {
-    "energia_critica": 0.08,
     "bomba_travada_ligada": 0.9,
     "camara_fria_alta": 0.117,
+    "energia_critica": 0.08,
     "bomba_madrugada_drenando": 0.967
   },
   "revocacao_anomalias_contextuais": 0.94,
   "nota": "Anomalias contextuais/multivariadas (bomba drenando de madrugada, bomba travada) sao dominio do Isolation Forest; quebras de limite de um unico sensor (camara fria, bateria) sao tratadas por regra deterministica na borda (defesa em profundidade).",
-  "gerado_em": "2026-11-04T17:52:46.807979+00:00"
+  "gerado_em": "2026-11-04T19:47:44.326203+00:00"
 }
