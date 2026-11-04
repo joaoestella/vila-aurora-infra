@@ -1,0 +1,7 @@
+; Registros DNS do domínio vilaaurora.example (fictício, laboratório) - RT-10
+; --- SPF: só o servidor de envio autorizado pode mandar e-mail; o resto falha (-all)
+vilaaurora.example.                 IN TXT  "v=spf1 ip4:203.0.113.25 -all"
+; --- DKIM: chave pública que valida a assinatura das mensagens
+vila2026._domainkey.vilaaurora.example. IN TXT  "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7yU/wBqw9eklxbXbkfwKk0Ai2TO/NUCxTJiRHRkBkia8rCV08ayUd3TuFz2nMVZ1obifYOweLwXLRhNc+f7BJ2ThtVp6Atp+PM2tUOtqes8kAp1bIdd1bM9GQcq6XutYcmkjSHqdgaEdnBNl2Ep1A1Y13DmKy3vvGgBituEIcdIWTesCjpPKr6VB6fa71y0GScD96iAMdD8P/prDuvLNGd+gpSCBLqtrr3wjHZccrTCiT1RY5kRgHZYkplAuCnqfI3TEM7JFELnbLBlx1T0/VZ3G6UpVN9UaN4QUxMiVuLjkxIR/VNzM9cizMD0JoDNToWJBUvuqgMbpM6TMjHikRwIDAQAB"
+; --- DMARC: política quarentena, com relatórios agregados
+_dmarc.vilaaurora.example.          IN TXT  "v=DMARC1; p=quarantine; rua=mailto:dmarc@vilaaurora.example; ruf=mailto:dmarc@vilaaurora.example; fo=1; adkim=s; aspf=s; pct=100"

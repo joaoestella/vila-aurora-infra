@@ -13,11 +13,11 @@
     "R3": 1
   },
   "caos": {
-    "tempo_operacao_autonoma_s": 30.0,
-    "backlog_pico": 118,
-    "tempo_reconciliacao_s": 40.1,
-    "perda_dados": 4,
+    "tempo_operacao_autonoma_s": 1800.1,
+    "backlog_pico": 3540,
+    "tempo_reconciliacao_s": 12.1,
+    "perda_dados": 0,
     "disponibilidade_local_pct": 100.0,
-    "minutos_programados": 0.5
+    "minutos_programados": 30
   }
 }

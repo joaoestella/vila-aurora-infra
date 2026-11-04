@@ -7,40 +7,40 @@ PrivateKey = <GERADA_LOCALMENTE_NAO_VERSIONAR>
 
 [Peer]
 # nó de borda centro - só alcança os serviços de nuvem
-PublicKey = ZoAUGQceDsAXVojwjhQw0N0ln5UPHubRi8awgRKnWyQ=
-AllowedIPs = 10.13.1.115/32
+PublicKey = Vr/wZ9EuuSS9YlAvfkYx+Uoen0aM/TjP/kVGpIEZHCs=
+AllowedIPs = 10.13.1.39/32
 
 [Peer]
 # nó de borda escola - só alcança os serviços de nuvem
-PublicKey = TqOud0E1N0e5bXCZOn/34xesuSO1EDEM+PoI7NNyR20=
-AllowedIPs = 10.13.1.200/32
+PublicKey = GXxSQy+CpXQWiKuOkomaB+LxmGPDb2qybSPxOcFVjXE=
+AllowedIPs = 10.13.1.53/32
 
 [Peer]
 # nó de borda ubs - só alcança os serviços de nuvem
-PublicKey = FLf6TC5aqMzaQ+U2LFeo9ykERTnLdsUB/Y6eFEodBHQ=
-AllowedIPs = 10.13.1.173/32
+PublicKey = WJTzqVJl91ANE+9Ooc9BV/E6aLLAbhizhJS2mGxeP0c=
+AllowedIPs = 10.13.1.164/32
 
 [Peer]
 # nó de borda horta - só alcança os serviços de nuvem
-PublicKey = na2gsrbZxA6PEV/RmUaPifsAQtfbv/QWJK38h92Dajs=
-AllowedIPs = 10.13.1.46/32
+PublicKey = ESvfXLy1Cv6u1razUDFHEyMHHgWrEky5ijcDUcNjLjc=
+AllowedIPs = 10.13.1.42/32
 
 [Peer]
 # nó de borda abrigo - só alcança os serviços de nuvem
-PublicKey = 0bMODyotNrr/okDoptMervP0Ha8n+uX5ZhmmYgkDHwo=
+PublicKey = kfj26Q3dJV1t6mWj+YkD0D09dQiF1k1rRM0ldON9+zs=
 AllowedIPs = 10.13.1.64/32
 
 [Peer]
 # operador ana.coord - acesso administrativo (habilitado por tempo via vpngate + MFA)
-PublicKey = e4QK8M6ejLCgYNugzSRCfOE/lZI2KK5JYKkUpV4HyHI=
-AllowedIPs = 10.13.9.64/32
+PublicKey = IrbftF/VBbHomy9yAu6bZKEOegd3hcprap+pGdWqyGI=
+AllowedIPs = 10.13.9.22/32
 
 [Peer]
 # operador rui.coord - acesso administrativo (habilitado por tempo via vpngate + MFA)
-PublicKey = 5nDurvpwFugN7+uNWRfb73dvPOTGnXWWFevhokOyeT0=
-AllowedIPs = 10.13.9.131/32
+PublicKey = qGRBtFrOtJxu7EJHaDyQSXP+DEtTavE152PG4z2xjn8=
+AllowedIPs = 10.13.9.107/32
 
 [Peer]
 # operador bruno.tec - acesso administrativo (habilitado por tempo via vpngate + MFA)
-PublicKey = Hefgm/QWzm0ucefg7DQcQKlUw8FHvyHUISD6mHvi0wQ=
-AllowedIPs = 10.13.9.69/32
+PublicKey = RAjEf3mMAIqRqrMr9udQWxSvxvs0CWJbVTjL6x8I/zQ=
+AllowedIPs = 10.13.9.197/32

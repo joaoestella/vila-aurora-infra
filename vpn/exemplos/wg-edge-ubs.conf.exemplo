@@ -1,9 +1,9 @@
 [Interface]
-Address = 10.13.1.173/32
+Address = 10.13.1.164/32
 PrivateKey = <GERADA_LOCALMENTE>
 [Peer]
 # só o hub; a borda não fala com outras bordas nem com operadores
-PublicKey = 1ou8/mDoFDpPQ5+r3AgK0YvdI0RTyHwIXU5EiZ7ocmg=
+PublicKey = xcFe46VlLBBuoExWW/h/5meMPp5rqsO7u1J7ZRXynWE=
 Endpoint = vpn.vilaaurora.example:51820
 AllowedIPs = 10.13.0.10/32
 PersistentKeepalive = 25
