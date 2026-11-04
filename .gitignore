@@ -1,17 +1,20 @@
-# segredos e material gerado: nunca versionar
-pki/out/
-vpn/out/
-secrets/
-*.key
-*.pem
-*.p12
-.env
-dns/keys/
 # dados de execução
-evidencias/runtime/
+# segredos e material gerado: nunca versionar
 **/__pycache__/
-*.sqlite
 *.db
-.venv/
+*.key
+*.p12
+*.pem
+*.sqlite
+.env
+.lab/
 .pytest_cache/
+.venv/
 certs-src/
+certs/
+dns/keys/
+evidencias/runtime/
+keys/
+pki/out/
+secrets/
+vpn/out/

@@ -39,7 +39,23 @@ make up                        # sobe nuvem + espaço UBS
 #   página local da borda: http://localhost:8080  (funciona mesmo com a nuvem fora)
 ```
 
-Reproduzir o incidente e os testes:
+### Caminho recomendado no Windows: WSL, sem Docker (validado)
+```bash
+sudo apt update && sudo apt install -y python3-pip python3-venv openssl wireguard-tools postgresql mosquitto make git
+python3 -m venv ~/venv-vila && source ~/venv-vila/bin/activate
+pip install flask paho-mqtt psycopg2-binary pyotp scikit-learn numpy pandas cryptography dkimpy requests pytest sqlmap psutil
+make pki                       # certificados, WireGuard, DKIM (uma vez)
+bash scripts/lab.sh up         # sobe banco, nuvem, SIEM, SOAR, borda e dispositivos
+bash scripts/lab.sh sqli       # SQL Injection: legado x corrigido
+bash scripts/lab.sh incidente  # reproduz o INC-VA-0712, gera alertas, respostas e evidências
+bash scripts/lab.sh cenario-frio   # câmara fria quente: sirene local, mesmo sem internet
+bash scripts/lab.sh caos 30    # teste de caos de 30 min
+bash scripts/lab.sh alertas | status | down
+```
+Painel corrigido em http://localhost:18000, borda em http://localhost:18080, legado em http://localhost:18081.
+O `docker-compose.yml` é uma alternativa e não foi validado; o caminho acima é o testado.
+
+Outros comandos (também funcionam no WSL):
 ```bash
 make incidente                 # sobe também o painel legado vulnerável
 python3 forense/reproduzir_incidente.py   # encena o INC-VA-0712 e coleta evidências
