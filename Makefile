@@ -2,8 +2,8 @@
 SHELL := /bin/bash
 .PHONY: pki up incidente todos down limpar seed caos ia phishing dkim testes
 pki:            ## Gera a CA, os certificados e a malha WireGuard + DKIM
-	PKI_OUT=$$PWD/certs-src bash pki/bootstrap.sh
-	PKI_OUT=$$PWD/certs-src bash pki/deploy.sh $$PWD/certs
+	PKI_OUT="$$PWD/certs-src" bash pki/bootstrap.sh
+	PKI_OUT="$$PWD/certs-src" bash pki/deploy.sh "$$PWD/certs"
 	python3 -c "import sys;sys.path.insert(0,'common');import cmdsig;import os;os.makedirs('keys',exist_ok=True);cmdsig.new_keypair('keys/cmd-signer.key','keys/cmd-signer.pub')"
 	mkdir -p secrets && head -c 32 /dev/urandom > secrets/pseudo.key
 	bash vpn/gerar_wireguard.sh && bash phishing/gerar_dkim.sh

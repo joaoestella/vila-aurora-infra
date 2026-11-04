@@ -1,0 +1,46 @@
+[Interface]
+# gateway de nuvem (hub) - segmenta borda (10.13.1.0/24) e admin (10.13.9.0/24)
+Address = 10.13.0.10/24
+ListenPort = 51820
+PrivateKey = <GERADA_LOCALMENTE_NAO_VERSIONAR>
+# menor privilégio entre segmentos aplicado por nftables (ver vpn/nftables.conf)
+
+[Peer]
+# nó de borda centro - só alcança os serviços de nuvem
+PublicKey = YU30r1DS0EoafNORPPI5M650raxC9/t3eK1NnuHLbTw=
+AllowedIPs = 10.13.1.72/32
+
+[Peer]
+# nó de borda escola - só alcança os serviços de nuvem
+PublicKey = O4ikOkhOSthNrovXIYV23q4tTkRb+gu9inaC8NIS8h4=
+AllowedIPs = 10.13.1.38/32
+
+[Peer]
+# nó de borda ubs - só alcança os serviços de nuvem
+PublicKey = Z1JB8kZKvQu9qmoPMCQoYogVnujJgJHXgEMK9CEPiA8=
+AllowedIPs = 10.13.1.59/32
+
+[Peer]
+# nó de borda horta - só alcança os serviços de nuvem
+PublicKey = R0bB3rPuzXVGxp9IRoLoQFxIHhCnZAcJ2NFE1iTEdxE=
+AllowedIPs = 10.13.1.139/32
+
+[Peer]
+# nó de borda abrigo - só alcança os serviços de nuvem
+PublicKey = 2Ct6u6fuRKSLItgrpSZ2NOn0JUQ9k8q026psppuFECE=
+AllowedIPs = 10.13.1.191/32
+
+[Peer]
+# operador ana.coord - acesso administrativo (habilitado por tempo via vpngate + MFA)
+PublicKey = 4pnoo18SyUyqSTkZNWd1fvdwfQQLpkp9cYeRqX7PNRA=
+AllowedIPs = 10.13.9.55/32
+
+[Peer]
+# operador rui.coord - acesso administrativo (habilitado por tempo via vpngate + MFA)
+PublicKey = lNuksE8fB/La5Wp1wzo9MEYOQQiTl/43TP4bVBOafCk=
+AllowedIPs = 10.13.9.44/32
+
+[Peer]
+# operador bruno.tec - acesso administrativo (habilitado por tempo via vpngate + MFA)
+PublicKey = gmyNUh9qilpOB49DDiy/i306a7MHQyObxRGMBYI/b0s=
+AllowedIPs = 10.13.9.76/32
