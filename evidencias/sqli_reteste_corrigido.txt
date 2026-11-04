@@ -1,0 +1,9 @@
+# Reteste no painel CORRIGIDO (/acessos?q=...) com os mesmos payloads
+# consulta parametrizada + validacao de entrada no servidor + usuario de banco so-leitura
+payload=[Aurora] -> HTTP 200 / 0 resultado(s)
+payload=[zzz%' OR '1'='1' -- ] -> HTTP 400 / Pedido inválido
+payload=[zzz%' UNION SELECT NULL,version(),current_user,NULL,NULL,NULL -- ] -> HTTP 400 / Pedido inválido
+payload=[x'] -> HTTP 400 / Pedido inválido
+
+Observacao: payloads com aspas/espacos sao barrados pela validacao (HTTP 400) e os validos
+viram texto de busca literal (0 resultados), sem erro de banco e sem vazamento.

@@ -1,0 +1,23 @@
+{
+  "cpu_pct_medio": 1.1,
+  "cpu_pct_max": 2.4,
+  "mem_mb_medio": 56.5,
+  "mem_mb_max": 56.8,
+  "banda_tx_total_kb": 157.8,
+  "banda_rx_total_kb": 33.7,
+  "amostras_metricas": 40,
+  "alertas_total": 80,
+  "alertas_por_regra": {
+    "R4": 77,
+    "R1": 2,
+    "R3": 1
+  },
+  "caos": {
+    "tempo_operacao_autonoma_s": 30.0,
+    "backlog_pico": 118,
+    "tempo_reconciliacao_s": 40.1,
+    "perda_dados": 4,
+    "disponibilidade_local_pct": 100.0,
+    "minutos_programados": 0.5
+  }
+}

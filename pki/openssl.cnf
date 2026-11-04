@@ -1,0 +1,86 @@
+# PKI do projeto Rede Vila Aurora (CA própria, somente laboratório)
+[ ca ]
+default_ca = issuing
+
+[ issuing ]
+dir               = $ENV::PKI_OUT/issuing
+database          = $dir/index.txt
+new_certs_dir     = $dir/newcerts
+serial            = $dir/serial
+crlnumber         = $dir/crlnumber
+certificate       = $dir/issuing.crt
+private_key       = $dir/issuing.key
+default_md        = sha256
+default_days      = 365
+default_crl_days  = 7
+policy            = pol_any
+unique_subject    = no
+copy_extensions   = copy
+email_in_dn       = no
+
+[ root ]
+dir               = $ENV::PKI_OUT/root
+database          = $dir/index.txt
+new_certs_dir     = $dir/newcerts
+serial            = $dir/serial
+crlnumber         = $dir/crlnumber
+certificate       = $dir/root.crt
+private_key       = $dir/root.key
+default_md        = sha384
+default_days      = 1825
+default_crl_days  = 180
+policy            = pol_any
+unique_subject    = no
+copy_extensions   = none
+
+[ pol_any ]
+commonName              = supplied
+organizationName        = optional
+organizationalUnitName  = optional
+
+[ req ]
+distinguished_name = dn
+prompt             = no
+[ dn ]
+CN = placeholder
+
+[ v3_root ]
+basicConstraints       = critical, CA:true
+keyUsage               = critical, keyCertSign, cRLSign
+subjectKeyIdentifier   = hash
+
+[ v3_issuing ]
+basicConstraints       = critical, CA:true, pathlen:0
+keyUsage               = critical, keyCertSign, cRLSign
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always
+
+[ v3_device ]
+basicConstraints       = critical, CA:false
+keyUsage               = critical, digitalSignature
+extendedKeyUsage       = clientAuth
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid
+crlDistributionPoints  = URI:https://pki.vila.lab/issuing.crl
+
+[ v3_edge ]
+basicConstraints       = critical, CA:false
+keyUsage               = critical, digitalSignature
+extendedKeyUsage       = clientAuth, serverAuth
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid
+crlDistributionPoints  = URI:https://pki.vila.lab/issuing.crl
+
+[ v3_service ]
+basicConstraints       = critical, CA:false
+keyUsage               = critical, digitalSignature
+extendedKeyUsage       = clientAuth, serverAuth
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid
+
+[ v3_server ]
+basicConstraints       = critical, CA:false
+keyUsage               = critical, digitalSignature
+extendedKeyUsage       = serverAuth
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid

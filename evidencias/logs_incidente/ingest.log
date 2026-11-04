@@ -1,0 +1,8 @@
+{"ts": "2026-11-04T17:46:06.446Z", "host": "claude", "src": "ingest", "event": "ingest_start", "sev": "info", "port": "18443"}
+{"ts": "2026-11-04T17:46:09.799Z", "host": "claude", "src": "ingest", "event": "commands_delivered", "sev": "info", "space": "ubs", "n": 6}
+{"ts": "2026-11-04T17:46:10.859Z", "host": "claude", "src": "ingest", "event": "ingest_batch", "sev": "info", "space": "ubs", "items": 13, "new": 7, "dup": 6, "cn": "edge-ubs"}
+{"ts": "2026-11-04T17:46:12.922Z", "host": "claude", "src": "ingest", "event": "ingest_batch", "sev": "info", "space": "ubs", "items": 4, "new": 0, "dup": 4, "cn": "edge-ubs"}
+{"ts": "2026-11-04T17:46:13.000Z", "host": "claude", "src": "ingest", "event": "commands_delivered", "sev": "info", "space": "ubs", "n": 6}
+{"ts": "2026-11-04T17:46:14.962Z", "host": "claude", "src": "ingest", "event": "ingest_batch", "sev": "info", "space": "ubs", "items": 13, "new": 7, "dup": 6, "cn": "edge-ubs"}
+{"ts": "2026-11-04T17:46:16.221Z", "host": "claude", "src": "ingest", "event": "commands_delivered", "sev": "info", "space": "ubs", "n": 6}
+{"ts": "2026-11-04T17:46:17.031Z", "host": "claude", "src": "ingest", "event": "ingest_batch", "sev": "info", "space": "ubs", "items": 13, "new": 7, "dup": 6, "cn": "edge-ubs"}

@@ -1,0 +1,29 @@
+{
+  "_comentario": "Configuração da campanha de phishing SIMULADO (RT-11). Alvos SÃO SOMENTE contas fictícias criadas pela equipe. Nunca usar e-mails reais. Importar no Gophish (ambiente isolado da equipe).",
+  "grupo_alvo": {
+    "nome": "voluntarios-ficticios-vila",
+    "membros": [
+      {"first_name": "Aurora", "last_name": "Sintética", "email": "aurora.volunteer@lab.vilaaurora.example", "position": "Coordenação (fictícia)"},
+      {"first_name": "Benedito", "last_name": "Teste", "email": "benedito.volunteer@lab.vilaaurora.example", "position": "Voluntário (fictício)"},
+      {"first_name": "Cecília", "last_name": "Exemplo", "email": "cecilia.volunteer@lab.vilaaurora.example", "position": "UBS (fictícia)"},
+      {"first_name": "Damião", "last_name": "Simulado", "email": "damiao.volunteer@lab.vilaaurora.example", "position": "Abrigo (fictício)"}
+    ]
+  },
+  "modelo_email": {
+    "nome": "atualizacao-acesso-painel",
+    "assunto": "Ação necessária: atualize seu acesso ao painel até hoje",
+    "remetente": "Prefeitura de Serra Clara <suporte@vila-aurora-prefeitura.example>",
+    "tecnica": "reproduz o INC-VA-0712: urgência + autoridade (prefeitura) + link falso; texto sem erros, estilo gerado por IA",
+    "html": "<p>Prezado(a) {{.FirstName}},</p><p>Por determinação da Secretaria, todos os acessos ao painel comunitário precisam ser revalidados <b>hoje</b>. Clique para confirmar: {{.URL}}</p><p>Em caso de dúvida, responda a este e-mail.</p><p>Atenciosamente,<br>Suporte - Prefeitura de Serra Clara</p>{{.Tracker}}"
+  },
+  "pagina_destino": {
+    "nome": "login-falso-painel",
+    "captura_credenciais": true,
+    "captura_senha": false,
+    "_nota": "O Gophish registra a submissão mas NÃO deve armazenar senhas; redireciona para a página educativa.",
+    "redirect_url": "https://lab.vilaaurora.example/voce-caiu-num-phishing"
+  },
+  "pagina_educativa": "phishing/pagina_educativa.html",
+  "envio": {"nome": "smtp-lab", "host": "mailhog:1025", "from_address": "suporte@vila-aurora-prefeitura.example", "ignorar_cert": true},
+  "metricas_coletadas": ["enviados", "abertos", "clicaram", "submeteram_dados", "reportaram"]
+}

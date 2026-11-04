@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="820" font-family="Segoe UI, Arial, sans-serif">
+<style>
+.lyr{fill:#f3f6f4;stroke:#9fb3a8;stroke-width:1.5;rx:10}
+.lbl{font-size:15px;fill:#45564c;font-weight:bold;letter-spacing:.5px}
+.box{fill:#ffffff;stroke:#355e4a;stroke-width:1.6;rx:8}
+.sec{fill:#fdecec;stroke:#8b0000;stroke-width:1.6;rx:8}
+.cloud{fill:#eef4fb;stroke:#1b4f72;stroke-width:1.6;rx:8}
+.t{font-size:13px;fill:#1b2b22}.ts{font-size:11px;fill:#55655c}
+.k{font-size:11px;fill:#8b0000;font-weight:bold}
+.flow{stroke:#355e4a;stroke-width:2;fill:none;marker-end:url(#a)}
+.vpn{stroke:#1b4f72;stroke-width:2.4;fill:none;stroke-dasharray:7 4;marker-end:url(#b)}
+</style>
+<defs>
+<marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#355e4a"/></marker>
+<marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1b4f72"/></marker>
+</defs>
+<rect x="0" y="0" width="1180" height="820" fill="#ffffff"/>
+<text x="24" y="34" font-size="22" font-weight="bold" fill="#1b2b22">Rede Comunitária Vila Aurora — arquitetura segura e resiliente em camadas</text>
+<text x="24" y="56" class="ts">Campo · Borda (edge) · Nuvem / serviços distribuídos · Supervisão — operação local mantida na queda da internet</text>
+
+<!-- CAMPO -->
+<rect class="lyr" x="24" y="80" width="300" height="690"/>
+<text x="38" y="104" class="lbl">CAMPO (5 espaços)</text>
+<rect class="box" x="40" y="120" width="268" height="150"/>
+<text x="52" y="142" class="t" font-weight="bold">Sensores e atuadores (sintéticos)</text>
+<text x="52" y="162" class="ts">nível, turbidez, cloro, temperatura</text>
+<text x="52" y="178" class="ts">câmara fria de vacinas (UBS)</text>
+<text x="52" y="194" class="ts">energia FV/bateria/gerador</text>
+<text x="52" y="210" class="ts">alagamento (abrigo), ar, umidade</text>
+<text x="52" y="226" class="ts">fechaduras RFID/QR, relés de bomba</text>
+<text x="52" y="248" class="k">cada dispositivo: certificado X.509 próprio</text>
+<rect class="box" x="40" y="286" width="268" height="90"/>
+<text x="52" y="308" class="t" font-weight="bold">VLAN IoT por espaço</text>
+<text x="52" y="328" class="ts">isolada da rede de operadores;</text>
+<text x="52" y="344" class="ts">só o nó de borda cruza para a VPN</text>
+<text x="52" y="362" class="k">segmentação física (RT-07)</text>
+
+<!-- BORDA -->
+<rect class="lyr" x="344" y="80" width="300" height="690"/>
+<text x="358" y="104" class="lbl">BORDA (edge) — autônoma</text>
+<rect class="box" x="360" y="120" width="268" height="250"/>
+<text x="372" y="142" class="t" font-weight="bold">Nó de borda (Raspberry Pi/VM)</text>
+<text x="372" y="164" class="ts">• Broker MQTT local (Mosquitto)</text>
+<text x="372" y="182" class="k">mTLS + require_certificate + CRL</text>
+<text x="372" y="202" class="ts">• Regras locais: câmara fria, bomba,</text>
+<text x="372" y="218" class="ts">  alagamento — sem depender da nuvem</text>
+<text x="372" y="238" class="ts">• Buffer store-and-forward (SQLite)</text>
+<text x="372" y="254" class="ts">• Reconciliação ao voltar o link</text>
+<text x="372" y="272" class="ts">• Página local p/ quem está no espaço</text>
+<text x="372" y="292" class="ts">• Valida assinatura dos comandos</text>
+<text x="372" y="312" class="k">só executa comando assinado (Ed25519)</text>
+<text x="372" y="334" class="ts">• Agente de logs → SIEM</text>
+<text x="372" y="354" class="k">pseudonimiza crachá antes de enviar</text>
+<rect class="box" x="360" y="386" width="268" height="78"/>
+<text x="372" y="408" class="t" font-weight="bold">Redundância (RT-03)</text>
+<text x="372" y="428" class="ts">link 4G de reserva + modo degradado;</text>
+<text x="372" y="444" class="ts">opera offline, reenvia ao reconectar</text>
+
+<!-- NUVEM -->
+<rect class="lyr" x="664" y="80" width="300" height="690"/>
+<text x="678" y="104" class="lbl">NUVEM / SERVIÇOS DISTRIBUÍDOS</text>
+<rect class="cloud" x="680" y="118" width="268" height="40"/><text x="692" y="143" class="t">API de ingestão (mTLS, verifica CRL)</text>
+<rect class="cloud" x="680" y="164" width="268" height="40"/><text x="692" y="189" class="t">PostgreSQL (privilégio mínimo por serviço)</text>
+<rect class="cloud" x="680" y="210" width="268" height="40"/><text x="692" y="235" class="t">Aprovação + assinatura de comandos</text>
+<rect class="cloud" x="680" y="256" width="268" height="40"/><text x="692" y="281" class="t">PKI/CA do projeto + revogação (CRL)</text>
+<rect class="cloud" x="680" y="302" width="268" height="40"/><text x="692" y="327" class="t">Gateway WireGuard + MFA (ZTNA)</text>
+<rect class="cloud" x="680" y="348" width="268" height="40"/><text x="692" y="373" class="t">SIEM (Wazuh/coletor próprio) + 4 regras</text>
+<rect class="cloud" x="680" y="394" width="268" height="40"/><text x="692" y="419" class="t">SOAR: respostas de baixo risco + aprovação</text>
+<rect class="cloud" x="680" y="440" width="268" height="40"/><text x="692" y="465" class="t">IA: Isolation Forest + guardrails de LLM</text>
+<rect class="sec" x="680" y="500" width="268" height="86"/>
+<text x="692" y="522" class="t" font-weight="bold">Painel LEGADO (isolado, p/ incidente)</text>
+<text x="692" y="542" class="k">vulnerável a SQL Injection — reprodução</text>
+<text x="692" y="560" class="ts">mostra o antes; a versão corrigida é o painel</text>
+<text x="692" y="576" class="ts">de supervisão (consultas parametrizadas)</text>
+
+<!-- SUPERVISAO -->
+<rect class="lyr" x="984" y="80" width="172" height="690"/>
+<text x="998" y="104" class="lbl">SUPERVISÃO</text>
+<rect class="box" x="996" y="120" width="148" height="150"/>
+<text x="1008" y="142" class="t" font-weight="bold">Painel web</text>
+<text x="1008" y="162" class="ts">corrigido (SQLi),</text>
+<text x="1008" y="178" class="ts">MFA + RBAC,</text>
+<text x="1008" y="194" class="ts">WCAG 2.1 AA,</text>
+<text x="1008" y="210" class="ts">PT simples</text>
+<text x="1008" y="232" class="k">acesso só via</text>
+<text x="1008" y="248" class="k">VPN + MFA</text>
+<rect class="box" x="996" y="286" width="148" height="110"/>
+<text x="1008" y="308" class="t" font-weight="bold">Alertas</text>
+<text x="1008" y="328" class="ts">e-mail/mensagem</text>
+<text x="1008" y="346" class="ts">+ console do SOC</text>
+<text x="1008" y="368" class="ts">decisão humana</text>
+<text x="1008" y="384" class="ts">no alto impacto</text>
+<rect class="box" x="996" y="412" width="148" height="92"/>
+<text x="1008" y="434" class="t" font-weight="bold">Operadores</text>
+<text x="1008" y="454" class="ts">operador, técnico,</text>
+<text x="1008" y="470" class="ts">coordenação,</text>
+<text x="1008" y="486" class="ts">auditor (RBAC)</text>
+
+<!-- flows -->
+<path class="flow" d="M308,195 L360,195"/>
+<path class="vpn" d="M628,240 C650,240 658,188 680,160"/>
+<text x="628" y="228" class="k" font-size="10">VPN WireGuard</text>
+<path class="flow" d="M948,235 L996,200"/>
+<path class="flow" d="M948,420 C968,420 976,330 996,320"/>
+<text x="60" y="520" class="ts" font-size="12">Fluxo de dados: sensor → borda (regra local + buffer) → VPN → ingestão mTLS → banco → painel.</text>
+<text x="60" y="540" class="ts" font-size="12">Comando: painel/SOAR → aprovação (assina) → ingestão → borda (verifica assinatura) → atuador.</text>
+<text x="60" y="560" class="ts" font-size="12">Na queda do link, a borda segue sozinha (alarme da câmara fria, limite da bomba) e reconcilia depois.</text>
+<text x="60" y="588" class="k" font-size="12">Cada falha do INC-VA-0712 tem um controle: phishing→MFA+SPF/DKIM/DMARC; VPN sem MFA→WireGuard+MFA;</text>
+<text x="60" y="606" class="k" font-size="12">SQLi→consultas parametrizadas; bomba→comando assinado; fibra→operação local; logs→SIEM com NTP.</text>
+</svg>

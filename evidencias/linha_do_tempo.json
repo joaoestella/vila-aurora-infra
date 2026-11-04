@@ -1,0 +1,69 @@
+[
+  {
+    "ts": "2026-11-04T17:46:15.061113+00:00",
+    "step": "T0",
+    "desc": "Phishing: e-mail e áudio com voz clonada pedem 'atualização de acesso'. A coordenadora entrega a senha na página falsa.",
+    "tecnica": "T1566 / T1598",
+    "canal": "e-mail + WhatsApp (voz clonada por IA)"
+  },
+  {
+    "ts": "2026-11-04T17:46:15.261757+00:00",
+    "step": "T1",
+    "desc": "Login na VPN legada (só senha, sem MFA) do IP externo 203.0.113.66, 02h14.",
+    "tecnica": "T1133/T1078",
+    "ip": "203.0.113.66"
+  },
+  {
+    "ts": "2026-11-04T17:46:15.343005+00:00",
+    "step": "T2",
+    "desc": "Com a sessão do painel legado, o atacante abusa do campo de busca (SQL Injection).",
+    "tecnica": "T1190",
+    "login_http": 200
+  },
+  {
+    "ts": "2026-11-04T17:46:15.353309+00:00",
+    "step": "T3",
+    "desc": "Exfiltração da tabela de usuários via UNION (dados de voluntários e moradores). Linhas lidas: 60.",
+    "tecnica": "T1213/T1005",
+    "registros": 60
+  },
+  {
+    "ts": "2026-11-04T17:46:15.369880+00:00",
+    "step": "T4",
+    "desc": "O agendamento da bomba da escola é alterado; o reservatório esvazia de madrugada.",
+    "tecnica": "T0836/T0831",
+    "bomba": "esc-bom-01"
+  },
+  {
+    "ts": "2026-11-04T17:46:15.369941+00:00",
+    "step": "T5",
+    "desc": "A fibra cai. No sistema legado os sensores dependem da nuvem: a câmara fria da UBS sai da faixa sem alarme.",
+    "tecnica": "T0826/T0815",
+    "consequencia": "vacinas em risco"
+  },
+  {
+    "ts": "2026-11-04T17:46:16.555476+00:00",
+    "step": "DEF",
+    "desc": "vpn_sem_mfa: negado: VPN moderna exige MFA; sem o segundo fator o login não completa"
+  },
+  {
+    "ts": "2026-11-04T17:46:16.555503+00:00",
+    "step": "DEF",
+    "desc": "sqli_no_painel_novo: HTTP 400 (validação barra a entrada; consulta é parametrizada)"
+  },
+  {
+    "ts": "2026-11-04T17:46:16.555514+00:00",
+    "step": "DEF",
+    "desc": "tabela_usuarios: inexistente no banco novo: operadores guardam só login, nome e perfil; crachás pseudonimizados"
+  },
+  {
+    "ts": "2026-11-04T17:46:16.555522+00:00",
+    "step": "DEF",
+    "desc": "bomba: comando de atuador só com assinatura Ed25519 do serviço de aprovação; gravação direta no banco não vira comando"
+  },
+  {
+    "ts": "2026-11-04T17:46:16.555529+00:00",
+    "step": "DEF",
+    "desc": "camara_fria: regra local no nó de borda dispara a sirene mesmo sem internet (store-and-forward reenvia depois)"
+  }
+]

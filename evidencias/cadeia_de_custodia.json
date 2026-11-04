@@ -1,0 +1,71 @@
+[
+  {
+    "evidencia": "painel_legado_access.log",
+    "origem": "/tmp/lab/log/painel_legado_access.log",
+    "sha256": "4f1e8789c9b16b754b1efacc2f4aae9afa6845e684c54d4472de2239ffa7a5c1",
+    "bytes": 441,
+    "coletado_em": "2026-11-04T17:46:18.558050+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "cp + hashlib(sha256)",
+    "mtime_origem": "2026-11-04T17:46:15.350965+00:00"
+  },
+  {
+    "evidencia": "atacante.log",
+    "origem": "/tmp/lab/log/atacante.log",
+    "sha256": "1ee585392d50f27a408a33d957305159cdfeb1f9318c58379c085ab4a172ac8b",
+    "bytes": 671,
+    "coletado_em": "2026-11-04T17:46:18.558257+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "cp + hashlib(sha256)",
+    "mtime_origem": "2026-11-04T17:46:15.368966+00:00"
+  },
+  {
+    "evidencia": "vpngate.log",
+    "origem": "/tmp/lab/log/vpngate.log",
+    "sha256": "8bf5b08461e926a5212a93bfc182d93f2516e964dd555311e4999e7bcbff3f4f",
+    "bytes": 1698,
+    "coletado_em": "2026-11-04T17:46:18.558410+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "cp + hashlib(sha256)",
+    "mtime_origem": "2026-11-04T17:46:16.186966+00:00"
+  },
+  {
+    "evidencia": "alerts.log",
+    "origem": "/tmp/lab/log/alerts.log",
+    "sha256": "b07e8ec46df0d38fb7410cdda75ab244fb5cbe466d7f6821664a5fde46eb79a2",
+    "bytes": 3773,
+    "coletado_em": "2026-11-04T17:46:18.559118+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "cp + hashlib(sha256)",
+    "mtime_origem": "2026-11-04T17:46:17.322966+00:00"
+  },
+  {
+    "evidencia": "ingest.log",
+    "origem": "/tmp/lab/log/ingest.log",
+    "sha256": "c63702ea5de75b702e4b8bbdd795f043402c3337a71c1154e61710396ffe0f2c",
+    "bytes": 1254,
+    "coletado_em": "2026-11-04T17:46:18.559379+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "cp + hashlib(sha256)",
+    "mtime_origem": "2026-11-04T17:46:17.030966+00:00"
+  },
+  {
+    "evidencia": "soar.log",
+    "origem": "/tmp/lab/log/soar.log",
+    "sha256": "3fae0ce97bd042e3d78f67d2767f17d291e9e30b9a87b69162323b6191418a7c",
+    "bytes": 5347,
+    "coletado_em": "2026-11-04T17:46:18.559703+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "cp + hashlib(sha256)",
+    "mtime_origem": "2026-11-04T17:46:17.368966+00:00"
+  },
+  {
+    "evidencia": "linha_do_tempo.json",
+    "origem": "reprodução controlada",
+    "sha256": "42bf2f95cd9cf82e7409e53a4ccd40644c8beffb89f0ae8e0b81b8b4d00cdd55",
+    "bytes": 2436,
+    "coletado_em": "2026-11-04T17:46:18.560100+00:00",
+    "coletado_por": "equipe-forense-vila (laboratório)",
+    "ferramenta": "reproduzir_incidente.py"
+  }
+]

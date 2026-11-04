@@ -1,0 +1,47 @@
+{
+  "space": "horta",
+  "version": "2026.11.1",
+  "name": "Horta e Cozinha Solidária",
+  "devices": {
+    "hrt-agu-01": {
+      "type": "water_quality"
+    },
+    "hrt-bom-01": {
+      "type": "pump"
+    }
+  },
+  "labels": {
+    "hrt-agu-01": "Reservatório da horta",
+    "hrt-bom-01": "Bomba de irrigação"
+  },
+  "rules": {
+    "pump_interlock": [
+      {
+        "pump": "hrt-bom-01",
+        "level_device": "hrt-agu-01",
+        "start_below_pct": 25,
+        "stop_above_pct": 90
+      }
+    ]
+  },
+  "actuators": {
+    "hrt-bom-01": {
+      "actions": {
+        "on": "low",
+        "off": "high",
+        "safe_mode": "low"
+      },
+      "allowed_hours": [
+        5,
+        20
+      ]
+    },
+    "edge-horta": {
+      "actions": {
+        "isolate_device": "low",
+        "release_device": "low",
+        "safe_mode": "low"
+      }
+    }
+  }
+}

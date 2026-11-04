@@ -1,0 +1,51 @@
+{
+  "space": "escola",
+  "version": "2026.11.1",
+  "name": "Escola Municipal",
+  "devices": {
+    "esc-niv-01": {
+      "type": "level"
+    },
+    "esc-bom-01": {
+      "type": "pump"
+    },
+    "esc-ene-01": {
+      "type": "energy"
+    }
+  },
+  "labels": {
+    "esc-niv-01": "Caixa d'água da escola",
+    "esc-bom-01": "Bomba de recalque",
+    "esc-ene-01": "Energia"
+  },
+  "rules": {
+    "pump_interlock": [
+      {
+        "pump": "esc-bom-01",
+        "level_device": "esc-niv-01",
+        "start_below_pct": 30,
+        "stop_above_pct": 95
+      }
+    ]
+  },
+  "actuators": {
+    "esc-bom-01": {
+      "actions": {
+        "on": "low",
+        "off": "high",
+        "safe_mode": "low"
+      },
+      "allowed_hours": [
+        6,
+        22
+      ]
+    },
+    "edge-escola": {
+      "actions": {
+        "isolate_device": "low",
+        "release_device": "low",
+        "safe_mode": "low"
+      }
+    }
+  }
+}

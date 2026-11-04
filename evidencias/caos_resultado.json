@@ -1,0 +1,115 @@
+{
+  "inicio": "2026-11-04T17:49:05.779633+00:00",
+  "minutos_programados": 0.5,
+  "amostras": [
+    {
+      "t": 0.0,
+      "wan_up": true,
+      "backlog": 6,
+      "alarms": {}
+    },
+    {
+      "t": 2.0,
+      "wan_up": true,
+      "backlog": 14,
+      "alarms": {}
+    },
+    {
+      "t": 4.0,
+      "wan_up": true,
+      "backlog": 22,
+      "alarms": {}
+    },
+    {
+      "t": 6.0,
+      "wan_up": false,
+      "backlog": 30,
+      "alarms": {}
+    },
+    {
+      "t": 8.0,
+      "wan_up": false,
+      "backlog": 38,
+      "alarms": {}
+    },
+    {
+      "t": 10.0,
+      "wan_up": false,
+      "backlog": 46,
+      "alarms": {}
+    },
+    {
+      "t": 12.0,
+      "wan_up": false,
+      "backlog": 54,
+      "alarms": {}
+    },
+    {
+      "t": 14.0,
+      "wan_up": false,
+      "backlog": 62,
+      "alarms": {}
+    },
+    {
+      "t": 16.0,
+      "wan_up": false,
+      "backlog": 70,
+      "alarms": {}
+    },
+    {
+      "t": 18.0,
+      "wan_up": false,
+      "backlog": 78,
+      "alarms": {}
+    },
+    {
+      "t": 20.0,
+      "wan_up": false,
+      "backlog": 86,
+      "alarms": {}
+    },
+    {
+      "t": 22.0,
+      "wan_up": false,
+      "backlog": 94,
+      "alarms": {}
+    },
+    {
+      "t": 24.0,
+      "wan_up": false,
+      "backlog": 102,
+      "alarms": {}
+    },
+    {
+      "t": 26.0,
+      "wan_up": false,
+      "backlog": 110,
+      "alarms": {}
+    },
+    {
+      "t": 28.0,
+      "wan_up": false,
+      "backlog": 118,
+      "alarms": {}
+    }
+  ],
+  "backlog_inicial": 6,
+  "fim": "2026-11-04T17:50:20.946891+00:00",
+  "operacao_autonoma_ok": true,
+  "tempo_operacao_autonoma_s": 30.0,
+  "backlog_pico": 118,
+  "mttd_link_s": 6.0,
+  "tempo_reconciliacao_s": 40.1,
+  "backlog_final": 4,
+  "perda_dados": 4,
+  "cloud_antes": 233,
+  "cloud_depois": 359,
+  "outages_registrados": [
+    {
+      "start": 1793814551.391373,
+      "end": 1793814576.6623805,
+      "dur_s": 25.3
+    }
+  ],
+  "disponibilidade_local_pct": 100.0
+}

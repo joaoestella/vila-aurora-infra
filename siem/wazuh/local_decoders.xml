@@ -1,0 +1,5 @@
+<!-- Decoders para os logs JSON da Rede Vila Aurora (campos de common/vlog.py) -->
+<decoder name="vila-json">
+  <prematch>^{</prematch>
+  <plugin_decoder>JSON_Decoder</plugin_decoder>
+</decoder>

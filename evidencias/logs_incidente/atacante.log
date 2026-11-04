@@ -1,0 +1,4 @@
+{"ts": "2026-11-04T17:46:15.061Z", "host": "claude", "src": "atacante", "event": "phishing_credential_captured", "sev": "high", "vitima": "coord.voluntarios", "metodo": "pagina_falsa+voz_clonada"}
+{"ts": "2026-11-04T17:46:15.353Z", "host": "claude", "src": "atacante", "event": "sqli_dump_usuarios", "sev": "critical", "linhas": 60, "tabela": "usuarios"}
+{"ts": "2026-11-04T17:46:15.369Z", "host": "claude", "src": "atacante", "event": "pump_schedule_tampered", "sev": "critical", "bomba": "esc-bom-01", "novo_horario": "03-04h"}
+{"ts": "2026-11-04T17:46:15.369Z", "host": "claude", "src": "atacante", "event": "link_down", "sev": "high", "efeito": "sem_operacao_local"}

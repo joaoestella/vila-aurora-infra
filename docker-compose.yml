@@ -1,0 +1,125 @@
+# Rede Vila Aurora - infraestrutura segura e resiliente (laboratório, dados sintéticos).
+# Sobe a nuvem (banco, ingestão mTLS, painel corrigido, painel legado vulnerável, aprovação, PKI, VPN gate,
+# SIEM e SOAR) e um espaço comunitário completo (borda + dispositivos). Os demais espaços sobem pelo
+# profile "todos". Gere os certificados antes com: make pki.
+x-common: &common
+  restart: unless-stopped
+  init: true
+services:
+  db:
+    image: postgres:16
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./cloud/db:/docker-entrypoint-initdb.d/sql:ro
+      - ./cloud/db/00_init.sh:/docker-entrypoint-initdb.d/00_init.sh:ro
+      - dbdata:/var/lib/postgresql/data
+    networks: [servicos]
+    <<: *common
+  ingest:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 cloud/ingest/app.py
+    environment: {DB_DSN: "host=db dbname=vila user=ingest_app password=${INGEST_DB_PASS}", CERT_DIR: /pki, CRL_PATH: /pki/issuing.crl, PORT: 8443, LOG_DIR: /var/log/vila}
+    volumes: [./certs/cloud:/pki:ro, logs:/var/log/vila, ./common:/app/common:ro, ./cloud:/app/cloud:ro]
+    working_dir: /app
+    networks: {servicos: {}, borda: {}}
+    depends_on: [db]
+    <<: *common
+  panel:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 cloud/panel/app.py
+    environment: {DB_DSN: "host=db dbname=vila user=panel_app password=${PANEL_DB_PASS}", CERT_DIR: /pki, APPROVAL_URL: "https://approval:9443", VPNGATE_URL: "https://vpngate:9445", SESSION_KEY: ${SESSION_KEY}, PORT: 8000, LOG_DIR: /var/log/vila}
+    volumes: [./certs/cloud:/pki:ro, logs:/var/log/vila, ./common:/app/common:ro, ./cloud:/app/cloud:ro]
+    working_dir: /app
+    ports: ["8443:8000"]
+    networks: [servicos, admin]
+    depends_on: [db, approval]
+    <<: *common
+  panel_legado:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 cloud/panel_legado/app.py
+    environment: {DB_DSN: "host=db dbname=vila_legado user=painel_legado password=${LEGACY_DB_PASS}", PORT: 8081, LOG_DIR: /var/log/vila, CLOCK_SKEW_S: "137"}
+    volumes: [logs:/var/log/vila, ./common:/app/common:ro, ./cloud:/app/cloud:ro]
+    working_dir: /app
+    ports: ["8081:8081"]
+    networks: [servicos]
+    profiles: [incidente]
+    depends_on: [db]
+    <<: *common
+  approval:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 soar/approval.py
+    environment: {DB_DSN: "host=db dbname=vila user=approval_app password=${APPROVAL_DB_PASS}", CERT_DIR: /pki, CMD_PRIVKEY: /keys/cmd-signer.key, POLICY_DIR: /app/edge/policies, PORT: 9443, LOG_DIR: /var/log/vila}
+    volumes: [./certs/cloud:/pki:ro, ./keys:/keys:ro, ./edge/policies:/app/edge/policies:ro, logs:/var/log/vila, ./common:/app/common:ro, ./soar:/app/soar:ro]
+    working_dir: /app
+    networks: [servicos, admin]
+    depends_on: [db]
+    <<: *common
+  pkiapi:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 cloud/pkiapi/app.py
+    environment: {CERT_DIR: /pki, CA_SH: /pki-src/ca.sh, PKI_OUT: /pki-src/out, PORT: 9444, LOG_DIR: /var/log/vila}
+    volumes: [./certs/cloud:/pki:ro, ./pki:/pki-src, logs:/var/log/vila, ./common:/app/common:ro, ./cloud:/app/cloud:ro]
+    working_dir: /app
+    networks: [servicos]
+    <<: *common
+  vpngate:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 vpn/vpngate.py
+    environment: {CERT_DIR: /pki, VPN_SESS: /data/vpn_sessions.json, PORT: 9445, LOG_DIR: /var/log/vila}
+    volumes: [./certs/cloud:/pki:ro, data:/data, logs:/var/log/vila, ./common:/app/common:ro, ./vpn:/app/vpn:ro]
+    working_dir: /app
+    networks: [servicos, admin]
+    <<: *common
+  soar:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 soar/responder.py
+    environment: {DB_DSN: "host=db dbname=vila user=approval_app password=${APPROVAL_DB_PASS}", CERT_DIR: /pki, APPROVAL_URL: "https://approval:9443", PKIAPI_URL: "https://pkiapi:9444", VPNGATE_URL: "https://vpngate:9445", FIREWALL_FILE: /data/blocklist.txt, PORT: 9446, LOG_DIR: /var/log/vila}
+    volumes: [./certs/cloud:/pki:ro, data:/data, logs:/var/log/vila, ./common:/app/common:ro, ./soar:/app/soar:ro]
+    working_dir: /app
+    networks: [servicos, admin]
+    depends_on: [approval, pkiapi, vpngate]
+    <<: *common
+  siem:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 siem/detector.py
+    environment: {LOG_DIR: /var/log/vila, SOAR_URL: "https://soar:9446", CA: /pki/ca-chain.crt, SIEM_CERT: /pki/svc-soar.crt, SIEM_KEY: /pki/svc-soar.key, SIEM_STATE: /data/siem_state.json}
+    volumes: [./certs/cloud:/pki:ro, logs:/var/log/vila, data:/data, ./common:/app/common:ro, ./siem:/app/siem:ro]
+    working_dir: /app
+    networks: [servicos]
+    depends_on: [soar]
+    <<: *common
+  # ---- um espaço comunitário (UBS). Para os cinco: docker compose --profile todos up
+  broker-ubs:
+    image: eclipse-mosquitto:2
+    command: ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
+    volumes: [./edge/broker/ubs.conf:/mosquitto/config/mosquitto.conf:ro, ./certs/ubs/edge:/pki:ro, brokerubs:/mosquitto/data]
+    networks: {borda: {aliases: [broker.ubs.vila.lab]}, iot_ubs: {}}
+    <<: *common
+  edge-ubs:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 edge/edge_agent.py
+    environment: {SPACE: ubs, NODE_NAME: edge-ubs, CERT_DIR: /pki, BROKER_HOST: broker-ubs, BROKER_PORT: 8883, CLOUD_URL: "https://ingest:8443", DATA_DIR: /data, POLICY_FILE: /app/edge/policies/ubs.json, CMD_PUBKEY: /keys/cmd-signer.pub, PSEUDO_KEY_FILE: /secrets/pseudo.key, LOG_DIR: /var/log/vila, LOCAL_PORT: 8080}
+    volumes: [./certs/ubs/edge:/pki, ./keys:/keys:ro, ./secrets:/secrets:ro, ./edge:/app/edge:ro, ./common:/app/common:ro, logs:/var/log/vila, dataubs:/data]
+    working_dir: /app
+    ports: ["8080:8080"]
+    networks: [borda, iot_ubs]
+    depends_on: [ingest, broker-ubs]
+    <<: *common
+  dispositivos-ubs:
+    build: {context: ., dockerfile: deploy/Dockerfile.py}
+    command: python3 devices/sim_device.py
+    environment: {SPACE: ubs, CERT_DIR: /pki, BROKER_HOST: broker-ubs, BROKER_PORT: 8883, POLICY_FILE: /app/edge/policies/ubs.json, DATA_DIR: /data, SCENARIO_DIR: /scenario}
+    volumes: [./certs/ubs/devices:/pki:ro, ./edge/policies:/app/edge/policies:ro, ./devices:/app/devices:ro, ./scenario:/scenario, devubs:/data]
+    working_dir: /app
+    networks: [iot_ubs]
+    depends_on: [broker-ubs]
+    <<: *common
+networks:
+  servicos: {}
+  admin: {}
+  borda: {}
+  iot_ubs: {}
+volumes: {dbdata: {}, logs: {}, data: {}, brokerubs: {}, dataubs: {}, devubs: {}}

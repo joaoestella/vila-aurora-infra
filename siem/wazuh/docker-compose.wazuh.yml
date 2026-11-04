@@ -1,0 +1,15 @@
+# Wazuh single-node mínimo (indexer+manager+dashboard). Precisa de ~8 GB. Opcional.
+# Pluga nos logs JSON da plataforma (volume externo "vila-aurora-infra_logs").
+services:
+  wazuh.manager:
+    image: wazuh/wazuh-manager:4.9.2
+    hostname: wazuh.manager
+    ulimits: {memlock: {soft: -1, hard: -1}, nofile: {soft: 655360, hard: 655360}}
+    volumes:
+      - ./local_rules.xml:/var/ossec/etc/rules/local_rules.xml
+      - ./local_decoders.xml:/var/ossec/etc/decoders/local_decoders.xml
+      - vila-aurora-infra_logs:/var/log/vila:ro
+    restart: unless-stopped
+volumes:
+  vila-aurora-infra_logs:
+    external: true

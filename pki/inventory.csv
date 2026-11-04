@@ -1,0 +1,30 @@
+nome,tipo,espaco,descricao,sans
+edge-centro,edge,centro,Nó de borda do Centro Comunitário,DNS:edge-centro;DNS:broker.centro.vila.lab;IP:127.0.0.1
+edge-escola,edge,escola,Nó de borda da Escola Municipal,DNS:edge-escola;DNS:broker.escola.vila.lab;IP:127.0.0.1
+edge-ubs,edge,ubs,Nó de borda da UBS,DNS:edge-ubs;DNS:broker.ubs.vila.lab;IP:127.0.0.1
+edge-horta,edge,horta,Nó de borda da Horta e Cozinha Solidária,DNS:edge-horta;DNS:broker.horta.vila.lab;IP:127.0.0.1
+edge-abrigo,edge,abrigo,Nó de borda do Abrigo de Emergência,DNS:edge-abrigo;DNS:broker.abrigo.vila.lab;IP:127.0.0.1
+cc-amb-01,device,centro,Qualidade do ar e umidade,
+cc-ace-01,device,centro,Fechadura RFID/QR,
+cc-ene-01,device,centro,Medidor de energia (FV e bateria),
+esc-niv-01,device,escola,Nível do reservatório,
+esc-bom-01,device,escola,Relé da bomba de recalque,
+esc-ene-01,device,escola,Medidor de energia,
+ubs-tmp-01,device,ubs,Temperatura da câmara fria de vacinas,
+ubs-ace-01,device,ubs,Fechadura da UBS,
+ubs-ene-01,device,ubs,Energia e gerador da UBS,
+hrt-agu-01,device,horta,Reservatório: nível turbidez e cloro,
+hrt-bom-01,device,horta,Bomba de irrigação,
+abr-ala-01,device,abrigo,Sensor de alagamento,
+abr-ene-01,device,abrigo,Energia e gerador do abrigo,
+abr-ace-01,device,abrigo,Fechadura do abrigo,
+ubs-sir-01,device,ubs,Sirene e luz de alerta da UBS,
+abr-sir-01,device,abrigo,Sirene do abrigo,
+ingest.vila.lab,server,nuvem,API de ingestão (mTLS),DNS:ingest.vila.lab;DNS:ingest;IP:172.31.10.10;IP:127.0.0.1;DNS:localhost
+painel.vila.lab,server,nuvem,Painel de supervisão,DNS:painel.vila.lab;DNS:panel;DNS:waf;DNS:localhost;IP:127.0.0.1
+svc-panel,service,nuvem,Identidade do painel junto ao serviço de aprovação,DNS:svc-panel;DNS:localhost;IP:127.0.0.1
+svc-soar,service,nuvem,Identidade do SOAR (resposta automática),DNS:svc-soar;DNS:localhost;IP:127.0.0.1
+svc-approval,service,nuvem,Serviço de aprovação e assinatura de comandos,DNS:svc-approval;DNS:approval;DNS:localhost;IP:127.0.0.1
+svc-pki,service,nuvem,API da CA emissora (revogação),DNS:svc-pki;DNS:pkiapi;DNS:localhost;IP:127.0.0.1
+svc-gw,service,nuvem,Agente do gateway VPN,DNS:svc-gw;DNS:cloud-gw;DNS:localhost;IP:127.0.0.1
+svc-vpngate,service,nuvem,Portão de acesso administrativo (VPN + MFA),DNS:svc-vpngate;DNS:vpngate;DNS:localhost;IP:127.0.0.1

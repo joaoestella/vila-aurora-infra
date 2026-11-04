@@ -1,0 +1,26 @@
+{"ts": "2026-11-04T17:46:06.348Z", "host": "claude", "src": "soar", "event": "soar_start", "sev": "info"}
+{"ts": "2026-11-04T17:46:10.823Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:10.832Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:10.871Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:10.878Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:10.922Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:10.928Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:13.975Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:13.990Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:14.027Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:14.034Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:14.079Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:14.085Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:15.122Z", "host": "claude", "src": "soar", "event": "soar_end_vpn", "sev": "high", "user": "coord.voluntarios", "ip": "203.0.113.66", "result": "encerrado"}
+{"ts": "2026-11-04T17:46:15.123Z", "host": "claude", "src": "soar", "event": "soar_block_ip", "sev": "high", "ip": "203.0.113.66", "why": "R1"}
+{"ts": "2026-11-04T17:46:15.129Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R1", "mode": "auto", "actions": [["end_vpn_session", "encerrado"], ["block_ip", "bloqueado"]], "alert_title": "Força bruta de autenticação VPN para coord.voluntarios"}
+{"ts": "2026-11-04T17:46:15.157Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R3", "mode": "auto", "actions": [], "alert_title": "Dispositivo sem certificado válido tentou conectar no broker"}
+{"ts": "2026-11-04T17:46:16.198Z", "host": "claude", "src": "soar", "event": "soar_end_vpn", "sev": "high", "user": "coord.voluntarios", "ip": "203.0.113.66", "result": "encerrado"}
+{"ts": "2026-11-04T17:46:16.199Z", "host": "claude", "src": "soar", "event": "soar_block_ip", "sev": "high", "ip": "203.0.113.66", "why": "R1"}
+{"ts": "2026-11-04T17:46:16.206Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R1", "mode": "auto", "actions": [["end_vpn_session", "encerrado"], ["block_ip", "bloqueado"]], "alert_title": "Login VPN anômalo de coord.voluntarios"}
+{"ts": "2026-11-04T17:46:17.256Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:17.262Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:17.307Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:17.323Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}
+{"ts": "2026-11-04T17:46:17.361Z", "host": "claude", "src": "soar", "event": "soar_safe_mode", "sev": "high", "space": "ubs", "device": "ubs-ace-01", "result": "enviado"}
+{"ts": "2026-11-04T17:46:17.369Z", "host": "claude", "src": "soar", "event": "soar_playbook_done", "sev": "info", "rule": "R4", "mode": "auto", "actions": [["safe_mode_actuator", "enviado"]], "alert_title": "Comando de atuador recusado pela borda"}

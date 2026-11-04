@@ -1,0 +1,60 @@
+{
+  "space": "abrigo",
+  "version": "2026.11.1",
+  "name": "Abrigo de Emergência",
+  "devices": {
+    "abr-ala-01": {
+      "type": "flood"
+    },
+    "abr-ene-01": {
+      "type": "energy"
+    },
+    "abr-ace-01": {
+      "type": "lock"
+    },
+    "abr-sir-01": {
+      "type": "siren"
+    }
+  },
+  "labels": {
+    "abr-ala-01": "Sensor de alagamento",
+    "abr-ene-01": "Energia e gerador",
+    "abr-ace-01": "Porta do abrigo",
+    "abr-sir-01": "Sirene"
+  },
+  "rules": {
+    "flood": {
+      "device": "abr-ala-01",
+      "max_cm": 10,
+      "siren": "abr-sir-01"
+    }
+  },
+  "actuators": {
+    "abr-ace-01": {
+      "actions": {
+        "unlock_once": "low",
+        "lock": "low",
+        "unlock_all": "high"
+      }
+    },
+    "abr-sir-01": {
+      "actions": {
+        "alarm_on": "low",
+        "alarm_off": "low"
+      }
+    },
+    "abr-ene-01": {
+      "actions": {
+        "generator_on": "low",
+        "generator_off": "high"
+      }
+    },
+    "edge-abrigo": {
+      "actions": {
+        "isolate_device": "low",
+        "release_device": "low",
+        "safe_mode": "low"
+      }
+    }
+  }
+}

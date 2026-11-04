@@ -1,0 +1,43 @@
+{
+  "space": "centro",
+  "version": "2026.11.1",
+  "name": "Centro Comunitário",
+  "devices": {
+    "cc-amb-01": {
+      "type": "air"
+    },
+    "cc-ace-01": {
+      "type": "lock"
+    },
+    "cc-ene-01": {
+      "type": "energy"
+    }
+  },
+  "labels": {
+    "cc-amb-01": "Qualidade do ar",
+    "cc-ace-01": "Porta principal",
+    "cc-ene-01": "Energia solar e bateria"
+  },
+  "rules": {
+    "access_hours": [
+      7,
+      22
+    ]
+  },
+  "actuators": {
+    "cc-ace-01": {
+      "actions": {
+        "unlock_once": "low",
+        "lock": "low",
+        "unlock_all": "high"
+      }
+    },
+    "edge-centro": {
+      "actions": {
+        "isolate_device": "low",
+        "release_device": "low",
+        "safe_mode": "low"
+      }
+    }
+  }
+}

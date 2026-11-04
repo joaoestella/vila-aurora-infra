@@ -1,0 +1,60 @@
+{
+  "space": "ubs",
+  "version": "2026.11.1",
+  "name": "Unidade Básica de Saúde",
+  "devices": {
+    "ubs-tmp-01": {
+      "type": "temperature"
+    },
+    "ubs-ace-01": {
+      "type": "lock"
+    },
+    "ubs-ene-01": {
+      "type": "energy"
+    },
+    "ubs-sir-01": {
+      "type": "siren"
+    }
+  },
+  "labels": {
+    "ubs-tmp-01": "Câmara fria de vacinas",
+    "ubs-ace-01": "Porta da UBS",
+    "ubs-ene-01": "Energia e gerador",
+    "ubs-sir-01": "Sirene de alerta"
+  },
+  "rules": {
+    "cold_chain": {
+      "device": "ubs-tmp-01",
+      "min_c": 2.0,
+      "max_c": 8.0,
+      "consecutive": 2,
+      "siren": "ubs-sir-01"
+    },
+    "access_hours": [
+      6,
+      22
+    ]
+  },
+  "actuators": {
+    "ubs-ace-01": {
+      "actions": {
+        "unlock_once": "low",
+        "lock": "low",
+        "unlock_all": "high"
+      }
+    },
+    "ubs-sir-01": {
+      "actions": {
+        "alarm_on": "low",
+        "alarm_off": "low"
+      }
+    },
+    "edge-ubs": {
+      "actions": {
+        "isolate_device": "low",
+        "release_device": "low",
+        "safe_mode": "low"
+      }
+    }
+  }
+}

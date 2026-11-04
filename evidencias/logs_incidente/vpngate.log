@@ -1,0 +1,9 @@
+{"ts": "2026-11-04T17:46:06.345Z", "host": "claude", "src": "vpngate", "event": "vpngate_start", "sev": "info"}
+{"ts": "2026-11-04T17:46:14.667Z", "host": "claude", "src": "vpngate", "event": "vpn_login_failed", "sev": "warning", "user": "coord.voluntarios", "ip": "203.0.113.66", "mfa": false, "geo": null}
+{"ts": "2026-11-04T17:46:14.739Z", "host": "claude", "src": "vpngate", "event": "vpn_login_failed", "sev": "warning", "user": "coord.voluntarios", "ip": "203.0.113.66", "mfa": false, "geo": null}
+{"ts": "2026-11-04T17:46:14.804Z", "host": "claude", "src": "vpngate", "event": "vpn_login_failed", "sev": "warning", "user": "coord.voluntarios", "ip": "203.0.113.66", "mfa": false, "geo": null}
+{"ts": "2026-11-04T17:46:14.875Z", "host": "claude", "src": "vpngate", "event": "vpn_login_failed", "sev": "warning", "user": "coord.voluntarios", "ip": "203.0.113.66", "mfa": false, "geo": null}
+{"ts": "2026-11-04T17:46:14.951Z", "host": "claude", "src": "vpngate", "event": "vpn_login_failed", "sev": "warning", "user": "coord.voluntarios", "ip": "203.0.113.66", "mfa": false, "geo": null}
+{"ts": "2026-11-04T17:46:15.111Z", "host": "claude", "src": "vpngate", "event": "vpn_session_killed", "sev": "high", "user": "coord.voluntarios", "by": "soar", "ip": "203.0.113.66"}
+{"ts": "2026-11-04T17:46:15.261Z", "host": "claude", "src": "vpngate", "event": "vpn_login_success", "sev": "info", "user": "coord.voluntarios", "ip": "203.0.113.66", "mfa": false, "geo": "XX", "vpn": "legada-pptp", "ts_note": "02:14 local"}
+{"ts": "2026-11-04T17:46:16.187Z", "host": "claude", "src": "vpngate", "event": "vpn_session_killed", "sev": "high", "user": "coord.voluntarios", "by": "soar", "ip": "203.0.113.66"}
